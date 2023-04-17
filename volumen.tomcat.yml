@@ -1,0 +1,7 @@
+ volumes:
+      - name: war-volume
+        configMap:
+          name: war-configmap
+          items:
+          - key: example.war
+            path: example.war
