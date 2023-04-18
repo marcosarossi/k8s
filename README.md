@@ -21,6 +21,19 @@ minikube service <service-name> --url
 minikube dashboard
 ```
 
+# docker
+
+## Usar el registry de dockers local
+
+```console
+minikube docker-env | Invoke-Expression # Usando powershell
+
+cd ./jsat
+docker build -t telpin-jsat-main images/jsat-main
+docker build -t telpin-jsat-ov images/jsat-ov
+#docker run -d --name jsat1 telpin-jsat-main
+```
+
 # kubernetes
 ## Recuperar los namespaces disponibles
 ```console
@@ -41,4 +54,8 @@ kubectl apply -f pv-postgres.yml
 ## Correr comandos dentro de un POD
 ```console
 kubectl exec -it pod-tomcat -- sh
+```
+## Herramienta para monitorear red (creando contenedor efímero)
+```console
+kubectl debug POD_NAME -it --image=nicolaka/netshoot
 ```
