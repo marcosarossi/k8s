@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: jsat-main
 spec:
@@ -19,16 +19,25 @@ spec:
         imagePullPolicy: Never # Importante para usar registry local
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: docs-pvc
+          mountPath: "/var/docs"
+  volumeClaimTemplates:
+  - metadata:
+      name: docs-pvc
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Mi
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: jsat-main
 spec:
-  type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
-    nodePort: 30000
   selector:
     role: jsat-main-tomcat

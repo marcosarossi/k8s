@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jsat-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /jsat
+        pathType: Prefix
+        backend:
+          service:
+            name: jsat-main
+            port:
+              number: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jsat-ov
+            port:
+              number: 8080
+      - path: /qovt
+        pathType: Prefix
+        backend:
+          service:
+            name: jsat-ov
+            port:
+              number: 8080

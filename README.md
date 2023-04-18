@@ -21,6 +21,16 @@ minikube service <service-name> --url
 minikube dashboard
 ```
 
+## Habilitar el addon ingress
+```console
+minikube addons enable ingress
+```
+
+## Montar directorio local en VM de minikube
+```console
+minikube mount <source directory>:<target directory>
+```
+
 # docker
 
 ## Usar el registry de dockers local
@@ -58,4 +68,9 @@ kubectl exec -it pod-tomcat -- sh
 ## Herramienta para monitorear red (creando contenedor efímero)
 ```console
 kubectl debug POD_NAME -it --image=nicolaka/netshoot
+```
+
+## Ingress
+```console
+kubectl get ingress
 ```

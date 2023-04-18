@@ -25,10 +25,8 @@ kind: Service
 metadata:
   name: jsat-ov
 spec:
-  type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
-    nodePort: 30001
   selector:
     role: jsat-ov-tomcat
